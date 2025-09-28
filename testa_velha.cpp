@@ -39,3 +39,11 @@ TEST_CASE("Vitoria Linha 1", "[single-file]") {
                       };
     REQUIRE(VerificaVelha(teste1) == 1);
 }
+
+TEST_CASE("Vitoria Linha 2", "[single-file]") {
+    int teste1[3][3]= {   { 0, 0, 1 },
+                          { 2, 2, 2 },
+                          { 1, 1, 0 }
+                      };
+    REQUIRE(VerificaVelha(teste1) == 2);
+}
