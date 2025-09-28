@@ -26,6 +26,12 @@ int VerificaVelha(int velha[3][3]) {
          returnValue = velha[0][column];
        }
     }
+
+	if (velha[0][0] != 0 && velha[0][0] == velha[0][1] &&
+		velha[0][1] == velha[0][2]) {
+		returnValue = velha[0][0];
+	}
+
     return returnValue;
 }
 
