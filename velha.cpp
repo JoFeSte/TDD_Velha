@@ -1,10 +1,8 @@
+// "Copyright 2025 Joao Felipe Stein"
 /**
  * \file  velha.cpp
  */
-
- 
 #include "velha.hpp"
-
 /** 
  * @brief verifica situacao do jogo da velha  
  * @author Joao Felipe Stein 
@@ -28,6 +26,11 @@ int VerificaVelha( int velha[3][3] )
 	if (velha[0][1] != 0 && velha[0][1] == velha[1][1] && velha[1][1] == velha[2][1])
 	{
 		returnValue = velha[0][1];
+	}
+
+	if (velha[0][0] != 0 && velha[0][0] == velha[1][0] && velha[1][0] == velha[2][0])
+	{
+		returnValue = velha[0][0];
 	}
 
 	return returnValue;
