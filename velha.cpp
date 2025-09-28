@@ -37,6 +37,11 @@ int VerificaVelha(int velha[3][3]) {
 		returnValue = velha[1][0];
 	}
 
+	if (velha[2][0] != 0 && velha[2][0] == velha[2][1] &&
+		velha[2][1] == velha[2][2]) {
+		returnValue = velha[2][0];
+	}
+
     return returnValue;
 }
 
