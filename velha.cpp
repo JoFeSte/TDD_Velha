@@ -36,21 +36,26 @@ int VerificaVelha(int velha[3][3]) {
 
 	// Impossible
 	bool isThereX = false;
-	for (int line = 0; line < 3; line++) {
-		for (int column = 0; column < 3; column++) {
-			if (!isThereX && velha[line][column] == 1) {
-				isThereX = true;
-			}
-		}
-		if (isThereX) {
-			break;
-		}
-	}
+    bool isThereO = false;
+    for (int line = 0; line < 3; line++) {
+        for (int column = 0; column < 3; column++) {
+            if (!isThereX && velha[line][column] == 1) {
+                isThereX = true;
+            }
 
-	if (!isThereX) {
+            if (!isThereO && velha[line][column] == 2) {
+                isThereO = true;
+            }
+        }
+        if (isThereO && isThereX) {
+            break;
+        }
+    }
+
+	if (!isThereX || !isThereO) {
 		return IMPOSSIBLE;
 	}
-	
+
 	// Vertical
     for (int column = 0; column < 3; column++) {
 		bool columnIsEqual = (velha[0][column] == velha[1][column]) 
@@ -87,5 +92,3 @@ int VerificaVelha(int velha[3][3]) {
 		return TIE;
 	}
 }
-
-
