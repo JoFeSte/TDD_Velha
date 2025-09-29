@@ -87,3 +87,11 @@ TEST_CASE("Empate 1", "[single-file]") {
                       };
     REQUIRE(VerificaVelha(teste1) == 0);
 }
+
+TEST_CASE("Empate 2", "[single-file]") {
+    int teste1[3][3]= {   { 1, 2, 2 },
+                          { 2, 1, 1 },
+                          { 1, 1, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste1) == 0);
+}
