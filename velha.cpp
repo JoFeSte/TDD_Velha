@@ -34,6 +34,23 @@ bool isMoveAvailable(int velha[3][3]) {
 0 if Tie, -1 if Indecisive, -2 if Impossible*/
 int VerificaVelha(int velha[3][3]) {
 
+	// Impossible
+	bool isThereX = false;
+	for (int line = 0; line < 3; line++) {
+		for (int column = 0; column < 3; column++) {
+			if (!isThereX && velha[line][column] == 1) {
+				isThereX = true;
+			}
+		}
+		if (isThereX) {
+			break;
+		}
+	}
+
+	if (!isThereX) {
+		return IMPOSSIBLE;
+	}
+	
 	// Vertical
     for (int column = 0; column < 3; column++) {
 		bool columnIsEqual = (velha[0][column] == velha[1][column]) 
@@ -66,9 +83,7 @@ int VerificaVelha(int velha[3][3]) {
 	}
 
 	// Check for tie
-	if (isMoveAvailable(velha)) {
-		return INDECISIVE;
-	} else {
+	if (!isMoveAvailable(velha)) {
 		return TIE;
 	}
 }
