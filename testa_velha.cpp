@@ -95,3 +95,11 @@ TEST_CASE("Empate 2", "[single-file]") {
                       };
     REQUIRE(VerificaVelha(teste1) == 0);
 }
+
+TEST_CASE("Vitoria tabuleiro cheio", "[single-file]") {
+    int teste1[3][3]= {   { 1, 2, 2 },
+                          { 2, 1, 1 },
+                          { 1, 2, 1 }
+                      };
+    REQUIRE(VerificaVelha(teste1) == 1);
+}
