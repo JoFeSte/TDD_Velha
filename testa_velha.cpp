@@ -77,3 +77,13 @@ TEST_CASE("Vitoria X Diagonal Direita-Esquerda", "[single-file]") {
                       };
     REQUIRE(VerificaVelha(teste1) == 1);
 }
+
+// Empate
+
+TEST_CASE("Empate 1", "[single-file]") {
+    int teste1[3][3]= {   { 1, 2, 1 },
+                          { 2, 2, 1 },
+                          { 1, 1, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste1) == 0);
+}
