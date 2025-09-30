@@ -147,3 +147,11 @@ TEST_CASE("Apenas zeros", "[single-file]") {
                       };
     REQUIRE(VerificaVelha(teste16) == -1);
 }
+
+TEST_CASE("Quadro indeciso 1", "[single-file]") {
+    int teste17[3][3]= {  { 1, 0, 0 },
+                          { 0, 0, 0 },
+                          { 0, 0, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste17) == -1);
+}
