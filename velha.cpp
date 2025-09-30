@@ -49,11 +49,13 @@ int VerificaVelha(int velha[3][3]) {
         }
     }
 
-	if (quantityX == 1 && quantityO == 0) {
-		return INDECISIVE;
-	} else if (quantityX == 0 && quantityX == quantityO) {
-		return INDECISIVE;
-	} else if (quantityX == 0 || quantityO == 0) {
+	if (quantityO == 0) {
+		if (quantityX == 1) {
+			return INDECISIVE;
+		} else if (quantityX != 0) {
+			return IMPOSSIBLE;
+		}
+	} else if (quantityX == 0) {
 		return IMPOSSIBLE;
 	}
 
@@ -89,7 +91,9 @@ int VerificaVelha(int velha[3][3]) {
 	}
 
 	// Check for tie
-	if (!isMoveAvailable(velha)) {
+	if (isMoveAvailable(velha)) {
+		return INDECISIVE;
+	} else {
 		return TIE;
 	}
 }
