@@ -59,6 +59,10 @@ int VerificaVelha(int velha[3][3]) {
 		return IMPOSSIBLE;
 	}
 
+	if (quantityX - quantityO > 1) {
+		return IMPOSSIBLE;
+	}
+
 	// Vertical
     for (int column = 0; column < 3; column++) {
 		bool columnIsEqual = (velha[0][column] == velha[1][column]) 
