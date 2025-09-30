@@ -16,7 +16,7 @@
 	INDECISIVE = -1,
 	TIE,
 	X_WINNING,
-	Y_WINNING
+	O_WINNING
  };
 
 bool isMoveAvailable(int velha[3][3]) {
@@ -28,6 +28,44 @@ bool isMoveAvailable(int velha[3][3]) {
 		}
 	}
 	return false;
+}
+
+void checkColumns(int velha[3][3], int &winner, int &wins) {
+	for (int column = 0; column < 3; column++) {
+		bool columnIsEqual = (velha[0][column] == velha[1][column]) 
+						&& (velha[1][column] == velha[2][column]);
+
+        if (velha[0][column] != 0 && columnIsEqual) {
+         	winner = velha[0][column];
+			wins++;
+        }
+    }
+}
+
+void checkLines(int velha[3][3], int &winner, int &wins) {
+	for (int line = 0; line < 3; line++) {
+		bool lineIsEqual = (velha[line][0] == velha[line][1]) 
+						&& (velha[line][1] == velha[line][2]);
+
+        if (velha[line][0] != 0 && lineIsEqual) {
+			winner = velha[line][0];
+			wins++;
+        }
+    }
+}
+
+void checkDiagonals(int velha[3][3], int &winner, int &wins) {
+	bool diagonalIsEqual = (velha[0][0] == velha[1][1]) && (velha[1][1] == velha[2][2]);
+	if (velha[0][0] != 0 && diagonalIsEqual) {
+		winner = velha[0][0];
+		wins++;
+	}
+
+	bool antiDiagonalIsEqual = (velha[0][2] == velha[1][1]) && (velha[1][1] == velha[2][0]);
+	if (velha[0][2] != 0 && antiDiagonalIsEqual) {
+		winner = velha[0][2];
+		wins++;
+	}
 }
 
 /* 1 if X is winning, 2 if O is winning, 
@@ -55,35 +93,19 @@ int VerificaVelha(int velha[3][3]) {
 		return IMPOSSIBLE;
 	}
 
-	// Vertical
-    for (int column = 0; column < 3; column++) {
-		bool columnIsEqual = (velha[0][column] == velha[1][column]) 
-						&& (velha[1][column] == velha[2][column]);
+	int winner = INDECISIVE;
+	int winsCounted = 0;
 
-        if (velha[0][column] != 0 && columnIsEqual) {
-         	return velha[0][column];
-        }
-    }
+	checkColumns(velha, winner, winsCounted);
 
-	// Horizontal
-    for (int line = 0; line < 3; line++) {
-		bool lineIsEqual = (velha[line][0] == velha[line][1]) 
-						&& (velha[line][1] == velha[line][2]);
+	checkLines(velha, winner, winsCounted);
 
-        if (velha[line][0] != 0 && lineIsEqual) {
-			return velha[line][0];
-        }
-    }
+	checkDiagonals(velha, winner, winsCounted);
 
-	// Diagonals
-	bool diagonalIsEqual = (velha[0][0] == velha[1][1]) && (velha[1][1] == velha[2][2]);
-	if (velha[0][0] != 0 && diagonalIsEqual) {
-		return velha[0][0];
-	}
-
-	bool antiDiagonalIsEqual = (velha[0][2] == velha[1][1]) && (velha[1][1] == velha[2][0]);
-	if (velha[0][2] != 0 && antiDiagonalIsEqual) {
-		return velha[0][2];
+	if (winsCounted > 1) {
+		return IMPOSSIBLE;
+	} else if (winsCounted == 1) {
+		return winner;
 	}
 
 	// Check for tie
