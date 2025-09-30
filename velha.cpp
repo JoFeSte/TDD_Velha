@@ -51,6 +51,8 @@ int VerificaVelha(int velha[3][3]) {
 
 	if (quantityX == 1 && quantityO == 0) {
 		return INDECISIVE;
+	} else if (quantityX == 0 && quantityX == quantityO) {
+		return INDECISIVE;
 	} else if (quantityX == 0 || quantityO == 0) {
 		return IMPOSSIBLE;
 	}
