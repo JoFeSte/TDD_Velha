@@ -140,7 +140,7 @@ TEST_CASE("Apenas um X", "[single-file]") {
     REQUIRE(VerificaVelha(teste15) == -1);
 }
 
-TEST_CASE("Apenas zeros", "[single-file]") {
+TEST_CASE("Partida nao comecou", "[single-file]") {
     int teste16[3][3]= {  { 0, 0, 0 },
                           { 0, 0, 0 },
                           { 0, 0, 0 }
@@ -148,7 +148,7 @@ TEST_CASE("Apenas zeros", "[single-file]") {
     REQUIRE(VerificaVelha(teste16) == -1);
 }
 
-TEST_CASE("Quadro indeciso 1", "[single-file]") {
+TEST_CASE("Quadro indeciso 1 - comeco de partida", "[single-file]") {
     int teste17[3][3]= {  { 1, 0, 0 },
                           { 0, 0, 0 },
                           { 0, 0, 2 }
@@ -156,10 +156,18 @@ TEST_CASE("Quadro indeciso 1", "[single-file]") {
     REQUIRE(VerificaVelha(teste17) == -1);
 }
 
-TEST_CASE("Quadro indeciso 2", "[single-file]") {
+TEST_CASE("Quadro indeciso 2 - meio de partida", "[single-file]") {
     int teste18[3][3]= {  { 1, 0, 0 },
                           { 0, 1, 2 },
                           { 1, 0, 2 }
                       };
     REQUIRE(VerificaVelha(teste18) == -1);
+}
+
+TEST_CASE("Quadro indeciso 3 - fim de partida", "[single-file]") {
+    int teste19[3][3]= {  { 1, 1, 0 },
+                          { 2, 1, 2 },
+                          { 1, 2, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste19) == -1);
 }
