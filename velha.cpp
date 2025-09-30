@@ -105,7 +105,11 @@ int VerificaVelha(int velha[3][3]) {
 	if (winsCounted > 1) {
 		return IMPOSSIBLE;
 	} else if (winsCounted == 1) {
-		return winner;
+		if (winner == X_WINNING && quantityX == quantityO) {
+			return IMPOSSIBLE;
+		} else {
+			return winner;
+		}
 	}
 
 	// Check for tie

@@ -13,7 +13,7 @@
 TEST_CASE("Vitoria Coluna 3", "[single-file]") {
     int teste1[3][3]= {   { 2, 0, 1 },
                           { 2, 0, 1 },
-                          { 0, 2, 1 }
+                          { 1, 2, 1 }
                       };
     REQUIRE(VerificaVelha(teste1) == 1);
 }
@@ -29,7 +29,7 @@ TEST_CASE("Vitoria Coluna 2", "[single-file]") {
 TEST_CASE("Vitoria Coluna 1", "[single-file]") {
     int teste3[3][3]= {   { 1, 2, 0 },
                           { 1, 0, 2 },
-                          { 1, 2, 0 }
+                          { 1, 2, 1 }
                       };
     REQUIRE(VerificaVelha(teste3) == 1);
 }
@@ -39,7 +39,7 @@ TEST_CASE("Vitoria Coluna 1", "[single-file]") {
 TEST_CASE("Vitoria Linha 1", "[single-file]") {
     int teste4[3][3]= {   { 1, 1, 1 },
                           { 0, 0, 2 },
-                          { 2, 2, 0 }
+                          { 2, 2, 1 }
                       };
     REQUIRE(VerificaVelha(teste4) == 1);
 }
@@ -53,7 +53,7 @@ TEST_CASE("Vitoria Linha 2", "[single-file]") {
 }
 
 TEST_CASE("Vitoria Linha 3", "[single-file]") {
-    int teste6[3][3]= {   { 0, 0, 2 },
+    int teste6[3][3]= {   { 0, 1, 2 },
                           { 2, 0, 2 },
                           { 1, 1, 1 }
                       };
@@ -64,14 +64,14 @@ TEST_CASE("Vitoria Linha 3", "[single-file]") {
 
 TEST_CASE("Vitoria X Diagonal Esquerda-Direita", "[single-file]") {
     int teste7[3][3]= {   { 1, 0, 2 },
-                          { 0, 1, 2 },
+                          { 1, 1, 2 },
                           { 0, 2, 1 }
                       };
     REQUIRE(VerificaVelha(teste7) == 1);
 }
 
 TEST_CASE("Vitoria X Diagonal Direita-Esquerda", "[single-file]") {
-    int teste8[3][3]= {   { 2, 0, 1 },
+    int teste8[3][3]= {   { 2, 1, 1 },
                           { 0, 1, 2 },
                           { 1, 2, 0 }
                       };
@@ -175,17 +175,25 @@ TEST_CASE("Quadro indeciso 3 - fim de partida", "[single-file]") {
 // Impossivel novamente
 
 TEST_CASE("Quadro impossivel 1 - muitos X's", "[single-file]") {
-    int teste19[3][3]= {  { 1, 1, 0 },
+    int teste20[3][3]= {  { 1, 1, 0 },
                           { 1, 1, 2 },
                           { 1, 2, 2 }
                       };
-    REQUIRE(VerificaVelha(teste19) == -2);
+    REQUIRE(VerificaVelha(teste20) == -2);
 }
 
 TEST_CASE("Quadro impossivel 2 - muitos O's", "[single-file]") {
-    int teste19[3][3]= {  { 1, 1, 0 },
+    int teste21[3][3]= {  { 1, 1, 0 },
                           { 1, 1, 2 },
                           { 1, 2, 2 }
                       };
-    REQUIRE(VerificaVelha(teste19) == -2);
+    REQUIRE(VerificaVelha(teste21) == -2);
+}
+
+TEST_CASE("Quadro impossivel 3 - X ganha com mesma quantidade de O's", "[single-file]") {
+    int teste21[3][3]= {  { 1, 1, 0 },
+                          { 1, 1, 2 },
+                          { 1, 2, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste21) == -2);
 }
