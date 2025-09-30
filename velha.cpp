@@ -49,16 +49,6 @@ int VerificaVelha(int velha[3][3]) {
         }
     }
 
-	if (quantityO == 0) {
-		if (quantityX == 1) {
-			return INDECISIVE;
-		} else if (quantityX != 0) {
-			return IMPOSSIBLE;
-		}
-	} else if (quantityX == 0) {
-		return IMPOSSIBLE;
-	}
-
 	if (quantityO > quantityX) {
 		return IMPOSSIBLE;
 	} else if (quantityX - quantityO > 1) {
