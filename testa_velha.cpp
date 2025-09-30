@@ -174,7 +174,15 @@ TEST_CASE("Quadro indeciso 3 - fim de partida", "[single-file]") {
 
 // Impossivel novamente
 
-TEST_CASE("Quadro impossivel 1 - muitos X", "[single-file]") {
+TEST_CASE("Quadro impossivel 1 - muitos X's", "[single-file]") {
+    int teste19[3][3]= {  { 1, 1, 0 },
+                          { 1, 1, 2 },
+                          { 1, 2, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste19) == -2);
+}
+
+TEST_CASE("Quadro impossivel 2 - muitos O's", "[single-file]") {
     int teste19[3][3]= {  { 1, 1, 0 },
                           { 1, 1, 2 },
                           { 1, 2, 2 }

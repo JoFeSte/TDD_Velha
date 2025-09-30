@@ -59,7 +59,9 @@ int VerificaVelha(int velha[3][3]) {
 		return IMPOSSIBLE;
 	}
 
-	if (quantityX - quantityO > 1) {
+	if (quantityO > quantityX) {
+		return IMPOSSIBLE;
+	} else if (quantityX - quantityO > 1) {
 		return IMPOSSIBLE;
 	}
 
