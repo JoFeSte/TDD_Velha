@@ -182,7 +182,7 @@ TEST_CASE("Quadro impossivel 2 - muitos O's", "[single-file]") {
     REQUIRE(VerificaVelha(teste21) == -2);
 }
 
-TEST_CASE("Quadro impossivel 3 - X ganha com mesma quantidade de O's", "[single-file]") {
+TEST_CASE("Quadro impossivel 3 - X ganha no turno errado", "[single-file]") {
     int teste22[3][3]= {  { 1, 0, 2 },
                           { 1, 1, 2 },
                           { 1, 2, 2 }
@@ -190,7 +190,7 @@ TEST_CASE("Quadro impossivel 3 - X ganha com mesma quantidade de O's", "[single-
     REQUIRE(VerificaVelha(teste22) == -2);
 }
 
-TEST_CASE("Quadro impossivel 4 - O ganha com quantidade maior de X's", "[single-file]") {
+TEST_CASE("Quadro impossivel 4 - O ganha no turno errado", "[single-file]") {
     int teste23[3][3]= {  { 2, 1, 0 },
                           { 1, 2, 1 },
                           { 1, 1, 2 }
