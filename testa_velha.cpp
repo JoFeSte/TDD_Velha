@@ -104,14 +104,6 @@ TEST_CASE("Vitoria tabuleiro cheio X", "[single-file]") {
     REQUIRE(VerificaVelha(teste11) == 1);
 }
 
-TEST_CASE("Vitoria tabuleiro cheio O", "[single-file]") {
-    int teste12[3][3]= {  { 2, 1, 1 },
-                          { 2, 2, 1 },
-                          { 1, 1, 2 }
-                      };
-    REQUIRE(VerificaVelha(teste12) == 2);
-}
-
 // Impossivel
 
 TEST_CASE("Nenhum X", "[single-file]") {
@@ -191,9 +183,17 @@ TEST_CASE("Quadro impossivel 2 - muitos O's", "[single-file]") {
 }
 
 TEST_CASE("Quadro impossivel 3 - X ganha com mesma quantidade de O's", "[single-file]") {
-    int teste21[3][3]= {  { 1, 1, 0 },
+    int teste22[3][3]= {  { 1, 0, 2 },
                           { 1, 1, 2 },
                           { 1, 2, 2 }
                       };
-    REQUIRE(VerificaVelha(teste21) == -2);
+    REQUIRE(VerificaVelha(teste22) == -2);
+}
+
+TEST_CASE("Quadro impossivel 4 - O ganha com quantidade maior de X's", "[single-file]") {
+    int teste23[3][3]= {  { 2, 1, 0 },
+                          { 1, 2, 1 },
+                          { 1, 1, 2 }
+                      };
+    REQUIRE(VerificaVelha(teste23) == -2);
 }

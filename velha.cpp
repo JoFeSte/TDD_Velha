@@ -71,8 +71,6 @@ void checkDiagonals(int velha[3][3], int &winner, int &wins) {
 /* 1 if X is winning, 2 if O is winning, 
 0 if Tie, -1 if Indecisive, -2 if Impossible*/
 int VerificaVelha(int velha[3][3]) {
-
-	// Impossible
 	int quantityX = 0;
     int quantityO = 0;
     for (int line = 0; line < 3; line++) {
@@ -102,12 +100,16 @@ int VerificaVelha(int velha[3][3]) {
 
 	checkDiagonals(velha, winner, winsCounted);
 
+	// Check for impossible wins
 	if (winsCounted > 1) {
 		return IMPOSSIBLE;
 	} else if (winsCounted == 1) {
 		if (winner == X_WINNING && quantityX == quantityO) {
 			return IMPOSSIBLE;
-		} else {
+		} else if (winner == O_WINNING && quantityX > quantityO) {
+			return IMPOSSIBLE;
+		}
+		else {
 			return winner;
 		}
 	}
