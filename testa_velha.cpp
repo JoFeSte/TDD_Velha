@@ -129,3 +129,12 @@ TEST_CASE("Nenhum O", "[single-file]") {
                       };
     REQUIRE(VerificaVelha(teste1) == -2);
 }
+
+TEST_CASE("Apenas um X", "[single-file]") {
+    int teste1[3][3]= {   { 0, 1, 0 },
+                          { 0, 0, 0 },
+                          { 0, 0, 0 }
+                      };
+    REQUIRE(VerificaVelha(teste1) == -1);
+}
+

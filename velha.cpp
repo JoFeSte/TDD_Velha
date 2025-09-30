@@ -35,24 +35,23 @@ bool isMoveAvailable(int velha[3][3]) {
 int VerificaVelha(int velha[3][3]) {
 
 	// Impossible
-	bool isThereX = false;
-    bool isThereO = false;
+	int quantityX = 0;
+    int quantityO = 0;
     for (int line = 0; line < 3; line++) {
         for (int column = 0; column < 3; column++) {
-            if (!isThereX && velha[line][column] == 1) {
-                isThereX = true;
+            if (velha[line][column] == 1) {
+                quantityX++;
             }
 
-            if (!isThereO && velha[line][column] == 2) {
-                isThereO = true;
+            if (velha[line][column] == 2) {
+                quantityO++;
             }
-        }
-        if (isThereO && isThereX) {
-            break;
         }
     }
 
-	if (!isThereX || !isThereO) {
+	if (quantityX == 1 && quantityO == 0) {
+		return INDECISIVE;
+	} else if (quantityX == 0 || quantityO == 0) {
 		return IMPOSSIBLE;
 	}
 
